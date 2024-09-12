@@ -89,7 +89,7 @@ export default function PopupDetails(loc) {
 
                         <input type="submit" value="submit" className="no4" />
                         {/* <button type="button" onClick={() => { console.log('++++++DATASET IS+++++: ' + storedData[storedData.length - 1].Lat); }} className="no4" /> */}
-                        <button type="button" onClick={() => { downloadJSON() }} className="no4" />
+                        <button type="button" onClick={() => { downloadJSON() }} className="no4" >Download dataset</button>
 
                     </form>
                 </div>
