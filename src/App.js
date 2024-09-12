@@ -29,7 +29,7 @@ export default function App() {
         city3Value = city3Ref.current.value;
         console.log("city1: ", city1Value);
         console.log("city2: ", city2Value);
-        console.log("city3: ", city3Value);
+        // console.log("city3: ", city3Value + ' --- hi ther--- ');
 
         var c1 = await cityCoords(city1Value);
         var c2 = await cityCoords(city2Value);
@@ -109,13 +109,13 @@ export default function App() {
 
                     {polygonyMode ? <LeafletRoutingMachine mark1={mark1} mark2={mark2} /> : null}
 
-                    {
+                    {/* {
                         !polygonyMode && (
                             <>
                                 <Polygony />
                             </>
                         )
-                    }
+                    } */}
 
                 </MapContainer>
             </div>

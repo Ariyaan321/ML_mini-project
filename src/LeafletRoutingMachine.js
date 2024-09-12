@@ -3,64 +3,44 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import { useMap, Marker, Popup } from "react-leaflet";
+import PopupDetails from "./popupDetails"
 
 const LeafletRoutingMachine = ({ mark1, mark2 }) => {
     const map = useMap();
-    const routingControlRef = useRef(null);
+    // const routingControlRef = useRef(null);
     const [markers, setMarkers] = useState([]);
+    const [popupLocation, setPopupLocation] = useState(null); // To store clicked location
+
     useEffect(() => {
-        const updateRouting = async () => {
-            if (routingControlRef.current != null) {
-                try {
-                    map.removeControl(routingControlRef.current);
-                } catch (error) {
-                    console.error("Error removing control:", error);
-                } finally {
-                    routingControlRef.current = null;
-                }
-            }
 
-            try {
-                const routingControl = L.routing
-                    .control({
-                        waypoints: [
-                            L.latLng(mark1[0], mark1[1]),
-                            L.latLng(mark2[0], mark2[1]),
-                        ],
-                    })
-                    .addTo(map);
-
-                routingControlRef.current = routingControl;
-
-                // Attach the 'routesfound' event listener to the routing control
-                routingControl.on("routesfound", handleRoutesFound);
-            } catch (error) {
-                console.error("Error adding control:", error);
-            }
-            if (routingControlRef.current) {
-                routingControlRef.current.on("routesfound", handleRoutesFound);
-            }
-
-            // Add the event listener for the 'click' event
-            map.on("click", handleMapClick);
-        };
-
-        updateRouting();
+        map.on("click", handleMapClick);
 
         return () => {
-            if (routingControlRef.current) {
-                try {
-                    map.removeControl(routingControlRef.current);
-                    // Remove the event listener for the 'click' event
-                    map.off("click", handleMapClick);
-                } catch (error) {
-                    console.error("Error removing control:", error);
-                } finally {
-                    routingControlRef.current = null;
-                }
-            }
-        };
+            map.off('click', handleMapClick)
+        }
     }, [mark1, mark2, map]);
+
+
+    // try here
+    const handleMapClick = (e) => {
+        // Get the coordinates where the user clicked
+        const { lat, lng } = e.latlng;
+        console.log('LAT LNG ARE: {' + lat + ' , ' + lng + '}');
+        // Set location to show PopupDetails
+        // Create a new marker element
+        const newMarker = (
+            <Marker key={markers.length} position={[lat, lng]}>
+                <Popup>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+            </Marker>
+        );
+        // Update the markers state to include the new marker
+        setMarkers([newMarker]);
+        // reverseGeocode(lat, lng, "city3");
+        setPopupLocation([lat, lng]);
+    };
+    // try here
 
     // Event handler for the 'routesfound' event
     const handleRoutesFound = (e) => {
@@ -119,23 +99,33 @@ const LeafletRoutingMachine = ({ mark1, mark2 }) => {
             console.error(`Error in reverse geocoding for ${targetInputId}:`, error);
         }
     };
-    const handleMapClick = (e) => {
-        // Get the coordinates where the user clicked
-        const { lat, lng } = e.latlng;
-        // Create a new marker element
-        const newMarker = (
-            <Marker key={markers.length} position={[lat, lng]}>
-                <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
-        );
-        // Update the markers state to include the new marker
-        setMarkers([newMarker]);
-        reverseGeocode(lat, lng, "city3");
-    };
+    // const handleMapClick = (e) => {
+    //     // Get the coordinates where the user clicked
+    //     const { lat, lng } = e.latlng;
+    //     console.log('LAT LNG ARE: {' + lat + ' , ' + lng + '}');
+    //     // Set location to show PopupDetails
+    //     setPopupLocation([lat, lng]);
+    //     // Create a new marker element
+    //     const newMarker = (
+    //         <Marker key={markers.length} position={[lat, lng]}>
+    //             <Popup>
+    //                 A pretty CSS3 popup. <br /> Easily customizable.
+    //             </Popup>
+    //         </Marker>
+    //     );
+    //     // Update the markers state to include the new marker
+    //     setMarkers([newMarker]);
+    //     reverseGeocode(lat, lng, "city3");
+    // };
 
-    return <>{markers}</>;
+    return (
+        <>
+            {markers}
+            {popupLocation ? <PopupDetails loc={popupLocation} /> : null}
+        </>
+    );
+
+
 };
 
 export default LeafletRoutingMachine;

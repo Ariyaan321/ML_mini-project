@@ -1,0 +1,133 @@
+/* fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 */
+.container {
+    color: black;
+    position: fixed;
+    top: 0%;
+    right: 0;
+    bottom: 0;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    /* width: 300px;
+    height: 300px; */
+}
+
+/* absolute cursor-pointer text-red-700 text-4xl font-extrabold ml-[310px] mt-[-260px] w-fit h-fit text-center hover:text-blue-700 duration-300 */
+.container span {
+    position: absolute;
+    cursor: pointer;
+    color: #B91C1C;
+    /* Red 700 */
+    font-size: 2.25rem;
+    /* 4xl */
+    font-weight: 800;
+    /* extrabold */
+    margin-left: 310px;
+    margin-top: -280px;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    transition: color 0.3s;
+}
+
+.container span:hover {
+    color: #1D4ED8;
+    /* Blue 700 */
+}
+
+/* flex flex-col gap-4 w-fit ml-8 */
+.container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* gap-4 */
+    width: fit-content;
+
+    margin-left: 2rem;
+    /* ml-8 */
+}
+
+/* notrue */
+/* font-medium text-white backdrop-blur-xl */
+.notrue {
+    font-weight: 500;
+    /* font-medium */
+    color: #fff;
+    backdrop-filter: blur(20px);
+    /* backdrop-blur-xl */
+}
+
+/* nofalse */
+/* font-medium mt-[-25px] text-white backdrop-blur-xl */
+.nofalse {
+    font-weight: 500;
+    /* font-medium */
+    margin-top: -15px;
+    color: #fff;
+    backdrop-filter: blur(20px);
+    width: fit-content;
+    /* backdrop-blur-xl */
+}
+
+.no3latlng {
+    background-color: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    color: #111827;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+    padding: 0.625rem;
+
+}
+
+
+/* bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 */
+.no3 {
+    background-color: #F9FAFB;
+    border: 1px solid #D1D5DB;
+    color: #111827;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    width: 50%;
+    padding: 0.625rem;
+}
+
+.no3:focus {
+    outline: none;
+    ring-color: #3B82F6;
+    border-color: #3B82F6;
+}
+
+.no3.dark {
+    background-color: #374151;
+    border-color: #4B5563;
+    placeholder-color: #9CA3AF;
+    color: #fff;
+}
+
+.no3.dark:focus {
+    ring-color: #3B82F6;
+    border-color: #3B82F6;
+}
+
+.no4 {
+    cursor: pointer;
+    width: fit-content;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    backdrop-filter: blur(8px);
+    border: 1px solid #000;
+    border-radius: 0.375rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.no4:hover {
+    box-shadow: 0px 0px 4px 4px rgba(255, 255, 255, 0.1);
+    /* hover:shadow */
+}
