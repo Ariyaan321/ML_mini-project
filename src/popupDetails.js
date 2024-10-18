@@ -29,7 +29,6 @@ export default function PopupDetails(loc) {
     }
 
     function handleType(e) {
-        console.log('location useStateis: ', location.loc[0] + ', ' + location.loc[1]);
         setType(e.target.value)
     }
     function handleBhk(e) {
