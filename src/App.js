@@ -73,7 +73,7 @@ export default function App() {
         <>
             <div className="app-container">
                 <div className="funs">
-                    {polygonyMode && (<form className="funs_form" onSubmit={handleFormSubmit}>
+                    {/* {polygonyMode && (<form className="funs_form" onSubmit={handleFormSubmit}>
                         <input type="text" id="city1" placeholder="city1" ref={city1Ref} />
                         <input type="text" id="city2" placeholder="city2" ref={city2Ref} />
                         <input
@@ -88,12 +88,12 @@ export default function App() {
 
 
                     </form>
-                    )}
-                    {!polygonyMode ? <button onClick={() => setPolygonyMode(!polygonyMode)} className="polybutton">create polygon</button> : null}
+                    )} */}
+                    {/* {!polygonyMode ? <button onClick={() => setPolygonyMode(!polygonyMode)} className="polybutton">create polygon</button> : null}
                     {polygonyMode && <button type="submit" id="poly" onClick={handlePolygon}>
                         polygon
                     </button>
-                    }
+                    } */}
                 </div>
 
                 <MapContainer
@@ -107,15 +107,8 @@ export default function App() {
                     />
 
 
-                    {polygonyMode ? <LeafletRoutingMachine mark1={mark1} mark2={mark2} /> : null}
+                    <LeafletRoutingMachine />
 
-                    {/* {
-                        !polygonyMode && (
-                            <>
-                                <Polygony />
-                            </>
-                        )
-                    } */}
 
                 </MapContainer>
             </div>

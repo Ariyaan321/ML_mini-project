@@ -5,9 +5,8 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import { useMap, Marker, Popup } from "react-leaflet";
 import PopupDetails from "./popupDetails"
 
-const LeafletRoutingMachine = ({ mark1, mark2 }) => {
+const LeafletRoutingMachine = () => {
     const map = useMap();
-    // const routingControlRef = useRef(null);
     const [markers, setMarkers] = useState([]);
     const [popupLocation, setPopupLocation] = useState(null); // To store clicked location
 
@@ -18,10 +17,9 @@ const LeafletRoutingMachine = ({ mark1, mark2 }) => {
         return () => {
             map.off('click', handleMapClick)
         }
-    }, [mark1, mark2, map]);
+    }, [map]);
 
 
-    // try here
     const handleMapClick = (e) => {
         // Get the coordinates where the user clicked
         const { lat, lng } = e.latlng;
@@ -99,24 +97,6 @@ const LeafletRoutingMachine = ({ mark1, mark2 }) => {
             console.error(`Error in reverse geocoding for ${targetInputId}:`, error);
         }
     };
-    // const handleMapClick = (e) => {
-    //     // Get the coordinates where the user clicked
-    //     const { lat, lng } = e.latlng;
-    //     console.log('LAT LNG ARE: {' + lat + ' , ' + lng + '}');
-    //     // Set location to show PopupDetails
-    //     setPopupLocation([lat, lng]);
-    //     // Create a new marker element
-    //     const newMarker = (
-    //         <Marker key={markers.length} position={[lat, lng]}>
-    //             <Popup>
-    //                 A pretty CSS3 popup. <br /> Easily customizable.
-    //             </Popup>
-    //         </Marker>
-    //     );
-    //     // Update the markers state to include the new marker
-    //     setMarkers([newMarker]);
-    //     reverseGeocode(lat, lng, "city3");
-    // };
 
     return (
         <>

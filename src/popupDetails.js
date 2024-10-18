@@ -6,12 +6,14 @@ export default function PopupDetails(loc) {
     const [location, setLocation] = useState(loc)
     const [editpop, setEditpop] = useState(true)
     const [type, setType] = useState("")
-    const [price, setPrice] = useState("")
+    const [bhk, setBhk] = useState("")
+    const [sqftValue, setSqftValue] = useState("")
     const [storedData, setStoredData] = useState([{
         "Lat": 99.9,
         "Lng": 99.0,
         "Type": "land",
-        "Price": 100
+        "Bhk": 3,
+        "Sqft": 99
     },])
 
     function formToJSON(e) {
@@ -20,7 +22,8 @@ export default function PopupDetails(loc) {
                 "Lat": location.loc[0],
                 "Lng": location.loc[1],
                 "Type": e.typeLoc.value,
-                "Price": e.priceLoc.value,
+                "Bhk": e.bhkLoc.value,
+                "Sqft": e.sqftLoc.value,
             }
         )
     }
@@ -29,8 +32,11 @@ export default function PopupDetails(loc) {
         console.log('location useStateis: ', location.loc[0] + ', ' + location.loc[1]);
         setType(e.target.value)
     }
-    function handlePrice(e) {
-        setPrice(e.target.value)
+    function handleBhk(e) {
+        setBhk(e.target.value)
+    }
+    function handleSqft(e) {
+        setSqftValue(e.target.value)
     }
 
     async function handleSubmit(e) {
@@ -61,7 +67,7 @@ export default function PopupDetails(loc) {
         if (editpop !== true) {
             setLocation(loc)
             setType("")
-            setPrice("")
+            setBhk("")
         }
         setEditpop(true)
 
@@ -81,15 +87,18 @@ export default function PopupDetails(loc) {
                     <span className="no1" onClick={() => setEditpop(false)}>&times;</span>
                     <form onSubmit={handleSubmit} className='no2' >
                         {
-                            <h3 className="nofalse">Add details</h3>
+                            <h1 className="nofalse">Add details</h1>
                         }
                         <p className="no3latlng">{location.loc[0] + ', ' + location.loc[1]}</p>
+                        <h2>Type</h2>
                         <input type="text" name="typeLoc" value={type} onChange={handleType} placeholder="Type" className="no3" />
-                        <input type="number" name="priceLoc" value={price} onChange={handlePrice} placeholder="Price" className="no3" />
+                        <h2>BHK</h2>
+                        <input type="number" name="bhkLoc" value={bhk} onChange={handleBhk} placeholder="BHK" className="no3" />
+                        <h2>Sqft</h2>
+                        <input type="number" name="sqftLoc" value={sqftValue} onChange={handleSqft} placeholder="Sqft" className="no3" />
 
-                        <input type="submit" value="submit" className="no4" />
-                        {/* <button type="button" onClick={() => { console.log('++++++DATASET IS+++++: ' + storedData[storedData.length - 1].Lat); }} className="no4" /> */}
-                        <button type="button" onClick={() => { downloadJSON() }} className="no4" />
+                        <input type="submit" value="submit" className="button-8" />
+                        <button type="button" onClick={() => { downloadJSON() }} className="button-8" >Downlaod dataset</button>
 
                     </form>
                 </div>
