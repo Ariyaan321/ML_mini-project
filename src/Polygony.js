@@ -11,7 +11,6 @@ const Polygony = () => {
 
     useEffect(() => {
         const addMark = (e) => {
-            console.log("marker: ", [e.latlng.lat, e.latlng.lng])
             setPolygonPositions([...polygonPositions, [e.latlng.lat, e.latlng.lng]]);
         };
 

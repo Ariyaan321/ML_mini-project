@@ -72,29 +72,6 @@ export default function App() {
     return (
         <>
             <div className="app-container">
-                <div className="funs">
-                    {/* {polygonyMode && (<form className="funs_form" onSubmit={handleFormSubmit}>
-                        <input type="text" id="city1" placeholder="city1" ref={city1Ref} />
-                        <input type="text" id="city2" placeholder="city2" ref={city2Ref} />
-                        <input
-                            type="text"
-                            id="city3"
-                            placeholder="Clicked location name"
-                            ref={city3Ref}
-                        />
-                        <button type="submit" id="submit">
-                            Submit
-                        </button>
-
-
-                    </form>
-                    )} */}
-                    {/* {!polygonyMode ? <button onClick={() => setPolygonyMode(!polygonyMode)} className="polybutton">create polygon</button> : null}
-                    {polygonyMode && <button type="submit" id="poly" onClick={handlePolygon}>
-                        polygon
-                    </button>
-                    } */}
-                </div>
 
                 <MapContainer
                     center={[21.146633, 79.08886]}

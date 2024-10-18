@@ -23,7 +23,6 @@ const LeafletRoutingMachine = () => {
     const handleMapClick = (e) => {
         // Get the coordinates where the user clicked
         const { lat, lng } = e.latlng;
-        console.log('LAT LNG ARE: {' + lat + ' , ' + lng + '}');
         // Set location to show PopupDetails
         // Create a new marker element
         const newMarker = (
@@ -89,12 +88,9 @@ const LeafletRoutingMachine = () => {
             const targetInput = document.getElementById(targetInputId);
             if (targetInput) {
                 targetInput.value = locationName;
-                console.log(targetInputId + " : " + locationName);
             } else {
-                console.error(`Error: DOM element with id ${targetInputId} not found.`);
             }
         } catch (error) {
-            console.error(`Error in reverse geocoding for ${targetInputId}:`, error);
         }
     };
 
