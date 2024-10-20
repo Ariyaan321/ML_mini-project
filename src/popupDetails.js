@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react";
+// import ApiData from './myApi/apiData'
 import "./popup.css"
 
 export default function PopupDetails(loc) {
@@ -8,6 +9,7 @@ export default function PopupDetails(loc) {
     const [type, setType] = useState("")
     const [bhk, setBhk] = useState("")
     const [sqftValue, setSqftValue] = useState("")
+    // const [apiResponse, setApiResponse] = useState("")
     const [storedData, setStoredData] = useState([{
         "Lat": 99.9,
         "Lng": 99.0,
@@ -42,6 +44,7 @@ export default function PopupDetails(loc) {
         e.preventDefault();
         const updatedData = formToJSON(e.target)
         console.log('++updated Data: ', updatedData);
+        // setApiResponse(await ApiData("post", updatedData))  // Post data into DB
         const newStoredData = [...storedData, updatedData]; // Adding new data
         setStoredData(newStoredData);  // Update state with new data
 
@@ -98,7 +101,12 @@ export default function PopupDetails(loc) {
 
                         <input type="submit" value="submit" className="button-8" />
                         <button type="button" onClick={() => { downloadJSON() }} className="button-8" >Downlaod dataset</button>
-
+                        {/* {
+                            apiResponse !== "" &&
+                            <p style={{ fontSize: 'small', color: 'black' }}>
+                                {apiResponse}
+                            </p>
+                        } */}
                     </form>
                 </div>
             )}
